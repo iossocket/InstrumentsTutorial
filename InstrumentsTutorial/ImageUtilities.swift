@@ -11,7 +11,7 @@ import UIKit
 private let _sharedCache = ImageCache()
 
 class ImageCache {
-    var images = [String:UIImage]()
+    var images = [String: UIImage]()
   
     class var sharedCache: ImageCache {
         return _sharedCache

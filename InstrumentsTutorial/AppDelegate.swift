@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension UINavigationController {
-    override open var preferredStatusBarStyle : UIStatusBarStyle {
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 }

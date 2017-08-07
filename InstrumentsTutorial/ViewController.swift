@@ -93,7 +93,7 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             searches.remove(at: indexPath.row)
-            tableView.deleteRows(at: [ indexPath ], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }

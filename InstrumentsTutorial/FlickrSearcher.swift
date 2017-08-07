@@ -12,8 +12,8 @@ import UIKit
 let apiKey = "xxxx"
 
 struct FlickrSearchResults {
-    let searchTerm : String
-    let searchResults : [FlickrPhoto]
+    let searchTerm: String
+    let searchResults: [FlickrPhoto]
 }
 
 enum FlickrError: Error {
@@ -22,16 +22,16 @@ enum FlickrError: Error {
     case unknown
 }
 
-class FlickrPhoto : Equatable {
-    let photoID : String
+class FlickrPhoto: Equatable {
+    let photoID: String
     let title: String
-    fileprivate let farm : Int
-    fileprivate let server : String
-    fileprivate let secret : String
+    fileprivate let farm: Int
+    fileprivate let server: String
+    fileprivate let secret: String
   
     typealias ImageLoadCompletion = (_ image: UIImage?, _ error: FlickrError?) -> Void
   
-    init (photoID:String, title:String, farm:Int, server:String, secret:String) {
+    init (photoID: String, title: String, farm: Int, server: String, secret: String) {
         self.photoID = photoID
         self.title = title
         self.farm = farm
@@ -91,7 +91,7 @@ class Flickr {
   
     let processingQueue = OperationQueue()
   
-    func searchFlickrForTerm(_ searchTerm: String, completion : @escaping (_ results: FlickrSearchResults?, _ error: FlickrError?) -> Void){
+    func searchFlickrForTerm(_ searchTerm: String, completion: @escaping (_ results: FlickrSearchResults?, _ error: FlickrError?) -> Void){
     
         let searchURL = flickrSearchURLForSearchTerm(searchTerm)
         let searchRequest = URLRequest(url: searchURL)
@@ -121,7 +121,7 @@ class Flickr {
             let photosContainer = resultsDictionary["photos"] as! NSDictionary
             let photosReceived = photosContainer["photo"] as! [NSDictionary]
           
-            let flickrPhotos : [FlickrPhoto] = photosReceived.map { photoDictionary in
+            let flickrPhotos: [FlickrPhoto] = photosReceived.map { photoDictionary in
             
                 let photoID = photoDictionary["id"] as? String ?? ""
                 let title = photoDictionary["title"] as? String ?? ""

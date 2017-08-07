@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchResultsCollectionViewCell : UICollectionViewCell {
+class SearchResultsCollectionViewCell: UICollectionViewCell {
   
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
@@ -16,7 +16,7 @@ class SearchResultsCollectionViewCell : UICollectionViewCell {
     var flickrPhoto: FlickrPhoto! {
         didSet {
             if flickrPhoto.isFavourite {
-                heartButton.tintColor = UIColor(red:1, green:0, blue:0.517, alpha:1)
+                heartButton.tintColor = UIColor(red: 1, green: 0, blue: 0.517, alpha: 1)
             } else {
                 heartButton.tintColor = UIColor.white
             }
@@ -48,7 +48,7 @@ class SearchResultsViewController: UIViewController {
     }
 }
 
-extension SearchResultsViewController : UICollectionViewDataSource {
+extension SearchResultsViewController: UICollectionViewDataSource {
   
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -63,7 +63,7 @@ extension SearchResultsViewController : UICollectionViewDataSource {
         if let flickrPhoto = searchResults?.searchResults[indexPath.item] {
             cell.flickrPhoto = flickrPhoto
             cell.heartToggleHandler = { isStarred in
-                self.collectionView.reloadItems(at: [ indexPath ])
+                self.collectionView.reloadItems(at: [indexPath])
             }
       
             flickrPhoto.loadThumbnail { image, error in
@@ -82,7 +82,7 @@ extension SearchResultsViewController : UICollectionViewDataSource {
     }
 }
 
-extension SearchResultsViewController : UICollectionViewDelegateFlowLayout {
+extension SearchResultsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.bounds.width / 3
         let height = (width / 4) * 3
